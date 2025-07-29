@@ -1,0 +1,144 @@
+name: AZ Blue Website - Cross-Browser Testing
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run tests daily at 6 AM UTC
+    - cron: '0 6 * * *'
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps ${{ matrix.browser }}
+    
+    - name: Run Playwright tests
+      run: npx playwright test --project=${{ matrix.browser }}
+    
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-results-${{ matrix.browser }}
+        path: |
+          test-results/
+          playwright-report/
+        retention-days: 30
+
+  mobile-test:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps chromium webkit
+    
+    - name: Run Mobile tests
+      run: npx playwright test --project="Mobile Chrome" --project="Mobile Safari"
+    
+    - name: Upload mobile test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-mobile-results
+        path: |
+          test-results/
+          playwright-report/
+        retention-days: 30
+
+  security-audit:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps chromium
+    
+    - name: Run Security tests
+      run: npx playwright test --project=chromium security.spec.js
+    
+    - name: Upload security test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: security-test-results
+        path: |
+          test-results/
+          playwright-report/
+        retention-days: 30
+
+  generate-report:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    needs: [test, mobile-test, security-audit]
+    if: always()
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: all-test-results
+    
+    - name: Merge test results
+      run: |
+        mkdir -p merged-results/test-results
+        mkdir -p merged-results/playwright-report
+        find all-test-results -name "*.json" -exec cp {} merged-results/test-results/ \;
+        find all-test-results -name "*.html" -exec cp {} merged-results/playwright-report/ \;
+    
+    - name: Upload merged results
+      uses: actions/upload-artifact@v4
+      with:
+        name: complete-test-report
+        path: merged-results/
+        retention-days: 30
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: merged-results/playwright-report

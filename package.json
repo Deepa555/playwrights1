@@ -1,0 +1,24 @@
+{
+  "name": "azblue-playwright-tests",
+  "version": "1.0.0",
+  "description": "Playwright test suite for AZ Blue website across all browsers",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "test:chromium": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:webkit": "npx playwright test --project=webkit",
+    "test:mobile": "npx playwright test --project=\"Mobile Chrome\" --project=\"Mobile Safari\"",
+    "test:all-browsers": "npx playwright test --project=chromium --project=firefox --project=webkit --project=\"Microsoft Edge\" --project=\"Google Chrome\"",
+    "test:report": "npx playwright show-report",
+    "test:install": "npx playwright install"
+  },
+  "keywords": ["playwright", "testing", "azblue", "e2e", "browsers"],
+  "author": "Deepa",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1"
+  }
+}

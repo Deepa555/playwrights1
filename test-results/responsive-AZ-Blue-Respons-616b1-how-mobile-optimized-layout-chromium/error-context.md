@@ -1,0 +1,300 @@
+# Page snapshot
+
+```yaml
+- button "Skip To Main content"
+- banner:
+  - link "(800) 232-2345":
+    - /url: "tel: (800) 232-2345"
+  - button "Login / Register"
+  - link "bcbs-logo-header":
+    - /url: https://www.azblue.com/
+    - img "bcbs-logo-header"
+  - button "Search"
+  - button "Menu"
+  - search:
+    - list:
+      - listitem:
+        - button "Search" [disabled]
+        - textbox "Search"
+        - button "Clear Search"
+  - navigation:
+    - list
+  - navigation:
+    - list:
+      - listitem:
+        - button "Find a Plan"
+      - listitem:
+        - button "For Members"
+      - listitem:
+        - button "Find Care"
+      - listitem:
+        - button "Inspire Health"
+  - navigation:
+    - list:
+      - listitem:
+        - button "Providers"
+      - listitem:
+        - button "Employers"
+      - listitem:
+        - button "Brokers"
+      - listitem:
+        - button "Health Choice"
+  - navigation:
+    - list
+  - navigation:
+    - link "24/7 Help":
+      - /url: https://www.azblue.com/members/24-7-help
+- main:
+  - img "hero-home-mobile"
+  - heading "Sign Up For Your AZ Blue Portal" [level=1]
+  - text: Easily access your plan, find care and more.
+  - link "Get Started":
+    - /url: https://identity.azblue.com/member-login
+    - text: Get Started
+    - img
+  - list:
+    - listitem:
+      - heading "Individuals and Families" [level=3]
+      - text: Self-insured and Affordable Care Act (ACA) health plans designed for every budget.
+      - link "Explore Plans":
+        - /url: https://www.azblue.com/individuals-and-families
+        - text: Explore Plans
+        - img
+    - listitem:
+      - heading "Medicare" [level=3]
+      - text: Choose from Medicare Advantage or Supplement (Medigap) plans with tons of healthy extras.
+      - link "Explore Plans":
+        - /url: https://www.azblue.com/medicare
+        - text: Explore Plans
+        - img
+    - listitem:
+      - heading "Medicaid" [level=3]
+      - text: Health coverage for those who need an extra hand. Explore Health Choice resources and eligibility.
+      - link "Check Eligibility":
+        - /url: https://www.azblue.com/health-choice-az
+        - text: Check Eligibility
+        - img
+    - listitem:
+      - heading "Employers" [level=3]
+      - text: Invest in healthcare plans that provide benefits and savings to you and your employees.
+      - link "Discover Solutions":
+        - /url: https://www.azblue.com/employers
+        - text: Discover Solutions
+        - img
+  - heading "Need help? We've got you." [level=2]
+  - text: If you have questions about your current plan, our team is here to help.
+  - link "24/7 Help":
+    - /url: https://www.azblue.com/members/24-7-help
+    - text: 24/7 Help
+    - img
+  - link "Call (800) 232-2345":
+    - /url: tel:8002322345
+  - img "customer_servicre_adj"
+  - img
+  - paragraph: Sign up for coverage quickly and easily.
+  - img "video-thumbnail 1"
+  - 'button "Play video: AZ Blue in Action Brings Heat Relief to Arizonans"':
+    - img
+  - heading "Our Hottest Days are Here" [level=2]
+  - text: Record-breaking heat is our new reality. AZ Blue wants to help keep you and your loved ones safe and healthy. Explore safety tips and volunteer opportunities to bring heat relief to those who need it most.
+  - link "Heat Illness Signs":
+    - /url: https://www.azblue.com/inspire-health/blog/take-the-heat-seriously-symptoms-ignore
+  - link "Take Action":
+    - /url: https://www.azblue.com/about-us/az-blue-in-action/take-action-with-us
+  - list:
+    - listitem:
+      - img "Business_Finance_Online_Web Address"
+      - heading "Login / Register Your Account" [level=3]
+      - text: Our portal lets you find all of your insurance information in one place.
+      - link "Get Started":
+        - /url: http://identity.azblue.com/member-login
+        - text: Get Started
+        - img
+    - listitem:
+      - img "Medical_Healthcare_ID Card"
+      - heading "Your ID Card" [level=3]
+      - text: View or download your medical ID card whenever you need it.
+      - link "Log in":
+        - /url: http://identity.azblue.com/member-login
+        - text: Log in
+        - img
+    - listitem:
+      - img "Business_Finance_Mobile_paperless"
+      - heading "Pay Your Bill" [level=3]
+      - text: Find your latest bill and make a payment.
+      - link "Log in":
+        - /url: http://identity.azblue.com/member-login
+        - text: Log in
+        - img
+  - img "Find-a-doctor-Homepage-Hero-mobile"
+  - heading "Find a doctor" [level=2]
+  - text: Search for doctors near you and in your network. Search by location, doctor or hospital name, health condition or specialty.
+  - link "Find a Doctor":
+    - /url: https://www.azblue.com/find-a-doctor
+    - text: Find a Doctor
+    - img
+  - heading "The AZ Blue Difference" [level=2]
+  - text: 1 in 3 People are covered by a Blue Cross and/or Blue Shield company nationwide 96% Physicians included in the statewide provider network along with 98% hospitals 1.6 Million Individuals, families and employers use services or products from AZ Blue
+  - heading "Stronger care creates stronger communities" [level=2]
+  - img "Nest Partnership"
+  - text: July 10, 2025
+  - heading "Up to 18,000 AZ Blue Medicaid Members May Now Receive Care at Home" [level=2]
+  - 'link "Read More: Up to 18,000 AZ Blue Medicaid Members May Now Receive Care at Home"':
+    - /url: https://www.azblue.com/newsroom/news-releases/nest-health-partnership
+    - text: Read More
+  - list:
+    - listitem:
+      - img "Nest Partnership"
+      - text: News Release
+      - heading "Up to 18,000 AZ Blue Medicaid Members May Now Receive Care at Home" [level=3]
+      - link "View All News Releases":
+        - /url: /newsroom/news-releases
+        - text: View All News Releases
+        - img
+    - listitem:
+      - img "Senior woman and adult daughter laughing on porch"
+      - text: Viewpoints
+      - 'heading "AZ Blue Delivers Health Solutions: Answers You Need, Action When it Counts" [level=3]'
+      - link "Other News":
+        - /url: /newsroom/viewpoints
+        - text: Other News
+        - img
+    - listitem:
+      - img "Creighton University Partnership"
+      - text: Community
+      - heading "A New Scholarship is Bringing More Physicians and Physician Assistants to Phoenix" [level=3]
+      - link "Browse All AZ Blue Foundation News":
+        - /url: /newsroom/community
+        - text: Browse All AZ Blue Foundation News
+        - img
+  - img "1255014654"
+  - heading "Are you a Blue partner looking for resources? We’ve got you covered." [level=2]
+  - list:
+    - listitem:
+      - link "Broker Resources":
+        - /url: https://www.azblue.com/brokers/resources
+        - text: Broker Resources
+        - img
+    - listitem:
+      - link "Employer Resources":
+        - /url: https://www.azblue.com/employers/resources
+        - text: Employer Resources
+        - img
+    - listitem:
+      - link "Provider Resources":
+        - /url: https://www.azblue.com/provider/resources
+        - text: Provider Resources
+        - img
+  - heading "Haven't found what you are looking for?" [level=3]
+  - text: We’re here to support our local community and create a healthier Arizona. Reach out to our team with questions or browse our FAQs.
+  - link "Contact Us":
+    - /url: https://www.azblue.com/contact-us
+    - text: Contact Us
+    - img
+  - link "View Our FAQs":
+    - /url: https://www.azblue.com/frequently-asked-questions
+    - text: View Our FAQs
+    - img
+- contentinfo:
+  - list:
+    - listitem:
+      - button "About"
+      - list:
+        - listitem:
+          - link "About Us":
+            - /url: https://www.azblue.com/about-us
+        - listitem:
+          - link "AZ Blue Foundation (Opens in a new tab)":
+            - /url: https://www.azbluefoundation.org/
+        - listitem:
+          - link "Careers (Opens in a new tab)":
+            - /url: https://jobs.azblue.com/
+        - listitem:
+          - link "AZ Blue in Action":
+            - /url: https://www.azblue.com/about-us/az-blue-in-action
+        - listitem:
+          - link "Corporate Governance":
+            - /url: https://www.azblue.com/about-us/corporate-governance
+        - listitem:
+          - link "Contact Us":
+            - /url: https://www.azblue.com/contact-us
+    - listitem:
+      - button "News"
+      - list:
+        - listitem:
+          - link "News":
+            - /url: https://www.azblue.com/newsroom
+        - listitem:
+          - link "Viewpoints":
+            - /url: https://www.azblue.com/newsroom/viewpoints
+        - listitem:
+          - link "In The Media":
+            - /url: https://www.azblue.com/newsroom/in-the-media
+    - listitem:
+      - button "Resources"
+      - list:
+        - listitem:
+          - link "Suppliers":
+            - /url: https://www.azblue.com/suppliers
+        - listitem:
+          - link "Frequently Asked Questions":
+            - /url: https://www.azblue.com/frequently-asked-questions
+        - listitem:
+          - link "Information in Other Languages (Opens in a new tab)":
+            - /url: https://edge.sitecorecloud.io/bluecross-6f8ea2ea/media/project/bcbs-az/azblue/data/media/files/legal/meaningful-access.pdf
+        - listitem:
+          - link "My Health Data":
+            - /url: https://www.azblue.com/interoperability
+        - listitem:
+          - link "Nondiscrimination Notice":
+            - /url: https://www.azblue.com/nondiscrimination-notice
+        - listitem:
+          - link "Privacy & Legal":
+            - /url: https://www.azblue.com/legal
+        - listitem:
+          - link "Report Member Fraud":
+            - /url: https://www.azblue.com/individuals-and-families/resources/fraud-and-abuse
+        - listitem:
+          - link "Report Provider Fraud":
+            - /url: https://www.azblue.com/provider/resources/fraud-and-abuse
+        - listitem:
+          - link "Share Screen":
+            - /url: javascript:;return false;
+    - listitem:
+      - list:
+        - listitem:
+          - link "Facebook":
+            - /url: https://www.facebook.com/bcbsaz/?WT.mc_id=S1
+            - img "Facebook"
+        - listitem:
+          - link "Instagram":
+            - /url: https://www.instagram.com/bcbsaz/?hl=en
+            - img "Instagram"
+        - listitem:
+          - link "LinkedIn":
+            - /url: https://linkedin.com/company/blue-cross-blue-shield-of-arizona/?WT.mc_id=S2
+            - img "LinkedIn"
+        - listitem:
+          - link "X":
+            - /url: https://twitter.com/bcbsaz/?WT.mc_id=S4
+            - img "X"
+        - listitem:
+          - link "YouTube":
+            - /url: https://youtube.com/bcbsarizona?WT.mc_id=S5
+            - img "YouTube"
+  - list:
+    - listitem:
+      - link:
+        - /url: https://accreditnet.urac.org/directory/#/accreditation/HIX010021/info
+      - paragraph: Marketplace
+      - paragraph: "Expires: 02/01/2027"
+    - listitem:
+      - link:
+        - /url: https://accreditnet.urac.org/directory/#/accreditation/HPL010021/info
+      - paragraph: Health Plan
+      - paragraph: "Expires: 02/01/2027"
+  - paragraph: © Blue Cross Blue Shield of Arizona. An independent licensee of the Blue Cross and Blue Shield Association.
+- button "How can we help you today?":
+  - img "reyna-question-smile-open-eyes"
+- alert
+```
