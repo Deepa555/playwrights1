@@ -1,0 +1,117 @@
+name: PR Tests
+
+# Trigger only on pull requests
+on:
+  pull_request:
+    branches: 
+      - main
+      - master
+      - develop
+    types: [opened, synchronize, reopened]
+
+# Concurrency group to cancel previous runs on new pushes to the same PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pr-tests:
+    timeout-minutes: 45
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+    
+    - name: Run Playwright tests for PR
+      run: npx playwright test --reporter=github
+      env:
+        CI: true
+    
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: pr-test-results-${{ github.event.pull_request.number }}
+        path: |
+          playwright-report/
+          test-results/
+        retention-days: 14
+    
+    - name: Comment PR with test results
+      uses: actions/github-script@v7
+      if: always()
+      with:
+        script: |
+          const fs = require('fs');
+          
+          // Try to read test results
+          let testSummary = '## 🎭 Playwright Test Results\n\n';
+          
+          try {
+            if (fs.existsSync('results.json')) {
+              const results = JSON.parse(fs.readFileSync('results.json', 'utf8'));
+              testSummary += `- **Total Tests:** ${results.stats?.total || 'Unknown'}\n`;
+              testSummary += `- **Passed:** ${results.stats?.passed || 'Unknown'}\n`;
+              testSummary += `- **Failed:** ${results.stats?.failed || 'Unknown'}\n`;
+              testSummary += `- **Skipped:** ${results.stats?.skipped || 'Unknown'}\n`;
+            } else {
+              testSummary += 'Test results file not found. Check the workflow logs for details.\n';
+            }
+          } catch (error) {
+            testSummary += 'Could not parse test results.\n';
+          }
+          
+          testSummary += '\n📊 **Detailed reports are available in the workflow artifacts.**\n';
+          testSummary += '\n🔗 **Workflow run:** ' + context.payload.pull_request.head.sha;
+          
+          // Comment on the PR
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: testSummary
+          });
+
+  # Quick smoke tests for faster feedback
+  smoke-tests:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright Browsers
+      run: npx playwright install chromium --with-deps
+    
+    - name: Run smoke tests (homepage only)
+      run: npx playwright test tests/homepage.spec.js --project=chromium
+      env:
+        CI: true
+    
+    - name: Quick security check
+      run: npx playwright test tests/security.spec.js --project=chromium --grep "should not expose sensitive information"
+      env:
+        CI: true

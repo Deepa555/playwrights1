@@ -1,0 +1,33 @@
+{
+  "name": "azblue-playwright-tests",
+  "version": "1.0.0",
+  "description": "Playwright test suite for AZ Blue website across all browsers",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "test:chromium": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:webkit": "npx playwright test --project=webkit",
+    "test:mobile": "npx playwright test --project=\"Mobile Chrome\" --project=\"Mobile Safari\"",
+    "test:all-browsers": "npx playwright test --project=chromium --project=firefox --project=webkit --project=\"Microsoft Edge\" --project=\"Google Chrome\"",
+    "test:report": "npx playwright show-report",
+    "test:install": "npx playwright install",
+    "test:ci": "npx playwright test --reporter=github",
+    "test:ci-headed": "npx playwright test --headed --reporter=github",
+    "test:smoke": "npx playwright test tests/homepage.spec.js --project=chromium",
+    "test:security": "npx playwright test tests/security.spec.js",
+    "test:performance": "npx playwright test tests/performance.spec.js",
+    "test:responsive": "npx playwright test tests/responsive.spec.js",
+    "test:navigation": "npx playwright test tests/navigation.spec.js",
+    "audit": "npm audit --audit-level=moderate",
+    "prepare": "npx playwright install --with-deps"
+  },
+  "keywords": ["playwright", "testing", "azblue", "e2e", "browsers"],
+  "author": "Deepa",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1"
+  }
+}
