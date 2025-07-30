@@ -1,0 +1,14 @@
+<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="4.483177">
+<testsuite name="homepage.spec.js" timestamp="2025-07-29T04:28:37.765Z" hostname="chromium" tests="2" failures="0" skipped="0" time="5.56" errors="0">
+<testcase name="AZ Blue Homepage Tests › should load homepage successfully" classname="homepage.spec.js" time="2.862">
+</testcase>
+<testcase name="AZ Blue Homepage Tests › should display main navigation elements" classname="homepage.spec.js" time="2.698">
+</testcase>
+</testsuite>
+<testsuite name="homepage.spec.js" timestamp="2025-07-29T04:28:37.765Z" hostname="Google Chrome" tests="2" failures="0" skipped="0" time="5.654" errors="0">
+<testcase name="AZ Blue Homepage Tests › should load homepage successfully" classname="homepage.spec.js" time="2.729">
+</testcase>
+<testcase name="AZ Blue Homepage Tests › should display main navigation elements" classname="homepage.spec.js" time="2.925">
+</testcase>
+</testsuite>
+</testsuites>
